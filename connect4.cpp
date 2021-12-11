@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <string>
 using namespace std;
 
 void check (int mode, string player, string computer, string grid[][6], string names[]){
@@ -14,13 +13,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r][c + 1] == "🔴" && grid[r][c + 2] == "🔴" && grid[r][c + 3] == "🔴")){   
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -28,20 +28,21 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 }
              }
+             
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r][c + 1] == "🟡" && grid[r][c + 2] == "🟡" && grid[r][c + 3] == "🟡")){   
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
 
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r][c + 1] == "🟡" && grid[r][c + 2] == "🟡" && grid[r][c + 3] == "🟡")){   
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -60,13 +61,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }    
+             
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c] == "🔴" && grid[r + 2][c] == "🔴" && grid[r + 3][c] == "🔴")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -74,19 +76,21 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 }
              } 
+             
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c] == "🟡" && grid[r + 2][c] == "🟡" && grid[r + 3][c] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }       
+             
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c] == "🟡" && grid[r + 2][c] == "🟡" && grid[r + 3][c] == "🟡")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -105,13 +109,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c + 1] == "🔴" && grid[r - 2][c + 2] == "🔴" && grid[r - 3][c + 3] == "🔴")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -119,19 +124,21 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 }
              }
+             
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c + 1] == "🟡" && grid[r - 2][c + 2] == "🟡" && grid[r - 3][c + 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c + 1] == "🟡" && grid[r - 2][c + 2] == "🟡" && grid[r - 3][c + 3] == "🟡")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -150,13 +157,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c + 1] == "🔴" && grid[r + 2][c + 2] == "🔴" && grid[r + 3][c + 3] == "🔴")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -164,19 +172,21 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 }
              }
+             
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c + 1] == "🟡" && grid[r + 2][c + 2] == "🟡" && grid[r + 3][c + 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c + 1] == "🟡" && grid[r + 2][c + 2] == "🟡" && grid[r + 3][c + 3] == "🟡")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -195,13 +205,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -209,19 +220,21 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 }
              }
+             
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -240,13 +253,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -254,19 +268,21 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    exit(0);
                 }
              }
+             
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
-                   cout << "\nYou win!" << endl;
+                   cout << "You win!" << endl;
                    exit(0);
                 }
              }
+             
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
-                   cout << names[1] << " wins!" << endl;
+                   cout << endl << names[1] << " wins!" << endl;
                    exit(0);
                 } 
                 if (mode == 2){
@@ -297,7 +313,7 @@ void computerMove (int n, int mode, string &player, string &computer, string gri
          }
         
          if (mode == 2){
-            cout << "\nIt's the computer's turn." << endl;
+            cout << "It's the computer's turn." << endl;
             n = rand() % 6;
          }
 
@@ -323,7 +339,15 @@ void computerMove (int n, int mode, string &player, string &computer, string gri
 void userMove (int n, int mode, string &player, string &computer, string grid[][6], string names[]){
          static int count = 1;
 
-         cout << "\nRound " << count << endl;
+         if (count == 22){
+            cout << "\nNo more moves are available." << endl;
+            cout << "It's a draw!" << endl;  
+            exit(0);
+         }
+         if (count == 1) cout << "Round " << count << endl;
+         else { 
+              cout << "\nRound " << count << endl;
+         }
 
          cout << "It's " << names[0] << "'s turn." << endl;
          cout << "Enter a column number: ";
