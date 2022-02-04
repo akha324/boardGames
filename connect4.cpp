@@ -3,8 +3,6 @@
 using namespace std;
 
 void check (int mode, string player, string computer, string grid[][6], string names[]){
-         int count = 0;
-
          for (int r = 0; r <= 6; r++){
          for (int c = 0; c <= 2; c++){
              if (player == "🔴" && (grid[r][c] == "🔴" && grid[r][c + 1] == "🔴" && grid[r][c + 2] == "🔴" && grid[r][c + 3] == "🔴")){   
@@ -304,7 +302,7 @@ void print (string grid[][6]){
          }
 }
 
-void computerMove (int n, int mode, string &player, string &computer, string grid[][6], string names[]){
+void computerMove (int n, int mode, string player, string computer, string grid[][6], string names[]){
          if (mode == 1){
             cout << "It's " << names[1] << "'s turn." << endl;
             cout << "Enter a column number: ";
@@ -336,7 +334,7 @@ void computerMove (int n, int mode, string &player, string &computer, string gri
          check (mode, player, computer, grid, names);
 }
 
-void userMove (int n, int mode, string &player, string &computer, string grid[][6], string names[]){
+void userMove (int n, int mode, string player, string computer, string grid[][6], string names[]){
          static int count = 1;
 
          if (count == 22){
@@ -353,8 +351,8 @@ void userMove (int n, int mode, string &player, string &computer, string grid[][
          cout << "Enter a column number: ";
          cin >> n;
          
-         while (n <= 0 || n >= 7){
-              cout << "Illegal. The columns numbers are 1, 2, 3, 4, 5, and 6." << endl;
+         while (n < 1 || n > 6){
+              cout << "\nIllegal. The columns numbers are 1, 2, 3, 4, 5, and 6." << endl;
               cout << "Enter a column number: ";
               cin >> n;
          }
@@ -409,6 +407,7 @@ void assign (string &player, string &computer, string color){
 }
 
 int main (){
+         srand(time(0));
          int n;
          int mode;
          string temp;
@@ -427,11 +426,13 @@ int main (){
          cout << "Welcome to Connect 4!" << endl;
          
          while (mode != 1 || mode != 2){
+               
                cout << "Enter the number which corresponds with the game mode of your choice: " << endl << endl;
                cout << "1. Player VS Player" << endl;
                cout << "2. Player VS Computer" << endl << endl;
                cin >> mode;
                cout << endl;
+               if (mode < 1 || mode > 2) cout << "Illegal. You must enter either 1 or 2." << endl;
                if (mode == 1) break;
                if (mode == 2) break;
          }
@@ -454,7 +455,6 @@ int main (){
             cout << endl;
          }
 
-
          while (color != "red" || color != "yellow"){
                cout << "Select the color of your chip." << endl;
                cout << "Enter \"red\" or \"yellow\" to continue: ";
@@ -462,7 +462,7 @@ int main (){
 
                if (color == "red") break;
                if (color == "yellow") break;
-               cout << "Illegal. Your choices are either \"red\" or \"yellow\"" << endl;
+               cout << "\nIllegal. Your choices are either \"red\" or \"yellow\"." << endl;
          }
 
          assign (player, computer, color);
