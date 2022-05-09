@@ -11,7 +11,7 @@
 #include <cstdlib>
 using namespace std;
 
-bool confirmation = false; 
+bool flag = false; 
 bool computerTurn = false;
 int gameCount = 0;
 
@@ -24,7 +24,7 @@ void restart (){
            
            if (answer == "yes"){
                cout << endl;
-               confirmation = true;
+               flag = true;
                break;
            }
                          
@@ -450,8 +450,8 @@ void userMove (int n, int mode, string player, string computer, string temp, str
          cout << endl;
          
          check (mode, player, computer, grid, names);
-         if (confirmation == true){
-            confirmation = false;
+         if (flag == true){
+            flag = false;
             cout << "Welcome to Connect 4!" << endl;
 
          while (mode != 1 || mode != 2){
@@ -521,16 +521,6 @@ void assign (string &player, string &computer, string color){
              player = "🟡";
              computer = "🔴";
          }
-
-         if (color == "yellow"){
-            player = "🟡";
-            computer = "🔴";
-         }
-
-         else {
-           player = "🔴";
-           computer = "🟡";
-         }  
 }
 
 // The purpose of this function is to execute the program.
