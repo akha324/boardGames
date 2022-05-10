@@ -616,7 +616,7 @@ int main (){
 
                if (color == "red") break;
                if (color == "yellow") break;
-               cout << "\nIllegal. Your choices are either \"red\" or \"yellow\"" << endl;
+               cout << "\nIllegal. Your choices are \"red\" and \"yellow\"" << endl;
          }
 
          assign (player, computer, color);
