@@ -32,6 +32,18 @@ void restart (){
            cout << "\nIllegal. You must enter either \'yes' or \'no' to continue: ";
     }
 }
+
+// The purpose of this function is to print the Connect 4 grid.
+void print (string grid[][6]){
+         cout << endl;
+         for (int r = 0; r <= 6; r++){
+         for (int c = 0; c <= 5; c++){
+             cout << grid[r][c];
+         }
+             cout << endl;
+         }
+}
+
 // The purpose of this function is to determine if there are four in a row.
 void check (int mode, string player, string computer, string grid[][6], string names[]){
          string answer;
@@ -51,11 +63,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r][c + 1] == "🔴" && grid[r][c + 2] == "🔴" && grid[r][c + 3] == "🔴")){   
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                 
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -75,11 +89,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
 
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r][c + 1] == "🟡" && grid[r][c + 2] == "🟡" && grid[r][c + 3] == "🟡")){   
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -103,11 +119,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c] == "🔴" && grid[r + 2][c] == "🔴" && grid[r + 3][c] == "🔴")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                 
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -127,11 +145,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c] == "🟡" && grid[r + 2][c] == "🟡" && grid[r + 3][c] == "🟡")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -155,11 +175,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c + 1] == "🔴" && grid[r - 2][c + 2] == "🔴" && grid[r - 3][c + 3] == "🔴")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -179,11 +201,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c + 1] == "🟡" && grid[r - 2][c + 2] == "🟡" && grid[r - 3][c + 3] == "🟡")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -207,11 +231,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c + 1] == "🔴" && grid[r + 2][c + 2] == "🔴" && grid[r + 3][c + 3] == "🔴")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -231,11 +257,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c + 1] == "🟡" && grid[r + 2][c + 2] == "🟡" && grid[r + 3][c + 3] == "🟡")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -259,11 +287,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -283,11 +313,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -311,11 +343,13 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
@@ -335,28 +369,19 @@ void check (int mode, string player, string computer, string grid[][6], string n
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
+                   if (gameCount > 0) print (grid);
                    cout << endl << names[1] << " wins!" << endl;
                    restart();
                 } 
                
                 if (mode == 2){
+                   if (gameCount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    restart();
                 }
              }
             }
             }
-}
-
-// The purpose of this function is to print the Connect 4 grid.
-void print (string grid[][6]){
-         cout << endl;
-         for (int r = 0; r <= 6; r++){
-         for (int c = 0; c <= 5; c++){
-             cout << grid[r][c];
-         }
-             cout << endl;
-         }
 }
 
 // The purpose of this function is to implement the computer's move.
@@ -450,6 +475,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
          cout << endl;
          
          check (mode, player, computer, grid, names);
+         top:
          if (flag == true){
             flag = false;
             cout << "Welcome to Connect 4!" << endl;
@@ -491,7 +517,17 @@ void userMove (int n, int mode, string player, string computer, string temp, str
                if (color == "yellow") break;
                cout << "\nIllegal. Your choices are either \"red\" or \"yellow\"" << endl;
          }
-         
+
+         if (color == "red"){ 
+             player = "🔴";
+             computer = "🟡";
+         }
+
+         else {
+             player = "🟡";
+             computer = "🔴";
+         }
+           
          for (int r = 0; r <= 6; r++){
          for (int c = 0; c <= 5; c++){
              grid[r][c] = "🟦";
@@ -506,6 +542,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
          computerTurn = true;
          computerMove (n, mode, player, computer, grid, names);
          computerTurn = false;
+         if (flag == true) goto top;
          count++;
          userMove (n, mode, player, computer, temp, color, grid, names);
 }
