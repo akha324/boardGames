@@ -29,7 +29,7 @@ void restart (){
            }
                          
            if (answer == "no") exit(0);
-           cout << "\nIllegal. You must enter either \'yes' or \'no' to continue: ";
+           cout << "\nIllegal. You must enter \'yes' or \'no' to continue: ";
     }
 }
 
@@ -386,7 +386,8 @@ void check (int mode, string player, string computer, string grid[][6], string n
 
 // The purpose of this function is to implement the computer's move.
 void computerMove (int n, int mode, string player, string computer, string grid[][6], string names[]){
-         if (mode == 1){
+        beginning: 
+        if (mode == 1){
             cout << "It's " << names[1] << "'s turn." << endl;
             cout << "Enter a column number: ";
             cin >> n;
@@ -395,9 +396,9 @@ void computerMove (int n, int mode, string player, string computer, string grid[
         
          if (mode == 2){
             cout << "It's the computer's turn." << endl;
-            n = rand() % 6;
+            n = rand() % 6; 
          }
-
+  
          for (int r = 0; r <= 6; r++){
          for (int c = 0; c <= 5; c++){
              if (grid[r][n] == "🟦" && r == 6){
@@ -410,8 +411,10 @@ void computerMove (int n, int mode, string player, string computer, string grid[
                 break;
              }
                 
-            if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r == 0)
-               computerMove (n, mode, player, computer, grid, names);
+            if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r == 0){
+               cout << "\nIllegal. No slots are available in this column." << endl;
+               goto beginning;
+            }
             }
             }
 
@@ -442,7 +445,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
               cout << "Round" << count << endl;
          else  
               cout << "\nRound " << count << endl;
-         
+         beginning:
          cout << "It's " << names[0] << "'s turn." << endl;
          cout << "Enter a column number: ";
          cin >> n;
@@ -466,7 +469,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
              }
              if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r == 0){
                 cout << "\nIllegal. No slots are available in this column." << endl;
-                userMove (n, mode, player, computer, temp, color, grid, names);
+                goto beginning;
              }
          }
          }
