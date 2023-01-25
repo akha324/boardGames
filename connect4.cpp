@@ -13,7 +13,14 @@ using namespace std;
 
 bool flag = false; 
 bool computerTurn = false;
-int gameCount = 0;
+int PVPcount = 0;
+int PVCcount = 0;
+int P1winCount = 0;
+int P2winCount = 0;
+int P1lossCount = 0;
+int P2lossCount = 0;
+double P1ratio;
+double P2ratio;
 
 // The purpose of the function is to restart the program if the user wants to play again.
 void restart (){
@@ -23,7 +30,7 @@ void restart (){
            cin >> answer;
            
            if (answer == "yes"){
-               cout << endl;
+               cout << endl << endl;
                flag = true;
                break;
            }
@@ -31,6 +38,45 @@ void restart (){
            if (answer == "no") exit(0);
            cout << "\nIllegal. You must enter \'yes' or \'no' to continue: ";
     }
+}
+
+// The purpose of this function is to display statistics for Player 1 and Player 2.
+void display (){
+             cout << "Player 1" << endl;
+             cout << "¯¯¯¯¯¯¯¯" << endl;
+             cout << "No. of Games Played: " << PVPcount + PVCcount << endl;
+             cout << "No. of Wins: " << P1winCount << endl;
+             cout << "No. of Losses: " << P1lossCount << endl;
+             
+             if (P1winCount != 0 && PVPcount != 0){
+                P1ratio = P1winCount / PVPcount;
+                P1ratio *= 100;
+                P1ratio = (int) P1ratio;
+                //P1ratio /= 100;
+             }
+  
+             if (((int) P1ratio) * 100 % 100 == 0) 
+                cout << "Win / Loss Ratio: " << P1ratio << ".00%" << endl;
+             else cout << "Win / Loss Ratio: " << P1ratio << endl;
+  
+             cout << endl << "Player 2" << endl;
+             cout << "¯¯¯¯¯¯¯¯" << endl;
+             cout << "No. of Games Played: " << PVCcount << endl;
+             cout << "No. of Wins: " << P2winCount << endl;
+             cout << "No. of Losses: " << P2lossCount << endl;
+
+             if (P2winCount != 0 && PVCcount != 0){
+                P2ratio = P2winCount / PVCcount;
+                P2ratio *= 100;
+                P2ratio = (int) P2ratio;
+                //P2ratio /= 100;
+             }  
+  
+             if (((int) P2ratio) * 100 % 100 == 0) 
+                cout << "Win / Loss Ratio: " << P2ratio << ".00%" << endl;
+             else cout << "Win / Loss Ratio: " << P2ratio << endl;
+
+             cout << endl << endl;
 }
 
 // The purpose of this function is to print the Connect 4 grid.
@@ -52,25 +98,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🔴" && (grid[r][c] == "🔴" && grid[r][c + 1] == "🔴" && grid[r][c + 2] == "🔴" && grid[r][c + 3] == "🔴")){   
                if (mode == 1){
                    cout << names[0] << " wins!" << endl;
-                   restart();
+                   P1winCount++;
+                   P2lossCount++;
+                   restart(); 
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r][c + 1] == "🔴" && grid[r][c + 2] == "🔴" && grid[r][c + 3] == "🔴")){   
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                 
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -78,25 +130,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r][c + 1] == "🟡" && grid[r][c + 2] == "🟡" && grid[r][c + 3] == "🟡")){   
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
 
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r][c + 1] == "🟡" && grid[r][c + 2] == "🟡" && grid[r][c + 3] == "🟡")){   
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -108,25 +166,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c] == "🔴" && grid[r + 2][c] == "🔴" && grid[r + 3][c] == "🔴")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }    
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c] == "🔴" && grid[r + 2][c] == "🔴" && grid[r + 3][c] == "🔴")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                 
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              } 
@@ -134,25 +198,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c] == "🟡" && grid[r + 2][c] == "🟡" && grid[r + 3][c] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }       
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c] == "🟡" && grid[r + 2][c] == "🟡" && grid[r + 3][c] == "🟡")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }             
@@ -164,25 +234,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
               if (player == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c + 1] == "🔴" && grid[r - 2][c + 2] == "🔴" && grid[r - 3][c + 3] == "🔴")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c + 1] == "🔴" && grid[r - 2][c + 2] == "🔴" && grid[r - 3][c + 3] == "🔴")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -190,25 +266,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c + 1] == "🟡" && grid[r - 2][c + 2] == "🟡" && grid[r - 3][c + 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c + 1] == "🟡" && grid[r - 2][c + 2] == "🟡" && grid[r - 3][c + 3] == "🟡")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print (grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -220,25 +302,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
               if (player == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c + 1] == "🔴" && grid[r + 2][c + 2] == "🔴" && grid[r + 3][c + 3] == "🔴")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r + 1][c + 1] == "🔴" && grid[r + 2][c + 2] == "🔴" && grid[r + 3][c + 3] == "🔴")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -246,25 +334,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c + 1] == "🟡" && grid[r + 2][c + 2] == "🟡" && grid[r + 3][c + 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r + 1][c + 1] == "🟡" && grid[r + 2][c + 2] == "🟡" && grid[r + 3][c + 3] == "🟡")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -276,25 +370,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
               if (player == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -302,25 +402,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -332,25 +438,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
               if (player == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🔴" && (grid[r][c] == "🔴" && grid[r - 1][c - 1] == "🔴" && grid[r - 2][c - 2] == "🔴" && grid[r - 3][c - 3] == "🔴")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -358,25 +470,31 @@ void check (int mode, string player, string computer, string grid[][6], string n
              if (player == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
                    cout << names[0] << " wins!" << endl;
+                   P1winCount++;
+                   P2lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
+                   P1winCount++;
                    restart();
                 }
              }
              
              if (computer == "🟡" && (grid[r][c] == "🟡" && grid[r - 1][c - 1] == "🟡" && grid[r - 2][c - 2] == "🟡" && grid[r - 3][c - 3] == "🟡")){
                 if (mode == 1){
-                   if (gameCount > 0) print (grid);
+                   if (PVPcount > 0) print(grid);
                    cout << endl << names[1] << " wins!" << endl;
+                   P2winCount++;
+                   P1lossCount++;
                    restart();
                 } 
                
                 if (mode == 2){
-                   if (gameCount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
+                   P1lossCount++;
                    restart();
                 }
              }
@@ -418,30 +536,27 @@ void computerMove (int n, int mode, string player, string computer, string grid[
             }
             }
 
-            if (gameCount == 0) print (grid);
-            check (mode, player, computer, grid, names);
+            if (PVPcount == 0 || PVCcount == 0) print(grid);
+            check(mode, player, computer, grid, names);
 }
 
 // The purpose of this function is to implement the user's move.
 void userMove (int n, int mode, string player, string computer, string temp, string color, string grid[][6], string names[]){
          static int count = 1;
 
-         if (gameCount > 0 && count == 1){
-            print (grid);
-            cout << endl;
-         }
-
-         if (gameCount > 0 && count != 1)
-             print (grid);
-         
          if (count == 22){
             cout << "No more moves are available." << endl;
             cout << "It's a draw!" << endl;  
             exit(0);
          }
+
+         if (count == 1){
+            print(grid);
+            cout << endl;
+         }
   
          if (count == 1) cout << "Round " << count << endl;
-         else if (gameCount > 0 && computerTurn == true)
+         else if ((PVPcount > 0 || PVCcount > 0) && computerTurn == true)
               cout << "Round" << count << endl;
          else  
               cout << "\nRound " << count << endl;
@@ -468,29 +583,32 @@ void userMove (int n, int mode, string player, string computer, string temp, str
                 break;
              }
              if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r == 0){
-                cout << "\nIllegal. No slots are available in this column." << endl;
+                cout << "Illegal. No slots are available in this column." << endl;
                 goto beginning;
              }
          }
          }
 
-         print (grid);
+         print(grid);
          cout << endl;
          
-         check (mode, player, computer, grid, names);
-         top:
+         check(mode, player, computer, grid, names);
+         peak:
          if (flag == true){
             flag = false;
             cout << "Welcome to Connect 4!" << endl;
 
+         top:    
          while (mode != 1 || mode != 2){
                cout << "Enter the number which corresponds with the game mode of your choice: " << endl << endl;
                cout << "1. Player VS Player" << endl;
-               cout << "2. Player VS Computer" << endl << endl;
+               cout << "2. Player VS Computer" << endl;
+               cout << "3. View Statistics" << endl << endl;
                cin >> mode;
+           
                cout << endl;
-               if (mode == 1) break;
-               if (mode == 2) break;
+           
+               if (mode == 1 || mode == 2 || mode == 3) break;
          }
 
          if (mode == 1){
@@ -509,6 +627,11 @@ void userMove (int n, int mode, string player, string computer, string temp, str
             cin >> temp;
             names[0] = temp;
             cout << endl;
+         }
+
+         if (mode == 3){
+            display();
+            goto top;
          }
 
          while (color != "red" || color != "yellow"){
@@ -538,16 +661,15 @@ void userMove (int n, int mode, string player, string computer, string temp, str
          }
 
          count = 1;
-         gameCount++;
-         userMove (n, mode, player, computer, temp, color, grid, names);   
+         userMove(n, mode, player, computer, temp, color, grid, names);   
          }
 
          computerTurn = true;
-         computerMove (n, mode, player, computer, grid, names);
+         computerMove(n, mode, player, computer, grid, names);
          computerTurn = false;
-         if (flag == true) goto top;
+         if (flag == true) goto peak;
          count++;
-         userMove (n, mode, player, computer, temp, color, grid, names);
+         userMove(n, mode, player, computer, temp, color, grid, names);
 }
 
 // The purpose of this function is to assign a color to its respective player.
@@ -583,17 +705,28 @@ int main (){
 
          cout << "Welcome to Connect 4!" << endl;
 
+         redo:
          while (mode != 1 || mode != 2){
                cout << "Enter the number which corresponds with the game mode of your choice: " << endl << endl;
                cout << "1. Player VS Player" << endl;
-               cout << "2. Player VS Computer" << endl << endl;
+               cout << "2. Player VS Computer" << endl;
+               cout << "3. View Statistics" << endl << endl;
                cin >> mode;
+               
                cout << endl;
-               if (mode == 1) break;
-               if (mode == 2) break;
-               cout << "Illegal. Your choices are 1 and 2.\n";
+           
+               if (mode == 1 || mode == 2 || mode == 3) break;
+               
+               cout << "Illegal. Your choices are 1, 2, and 3.\n";
           }
-
+         
+         if (mode == 1) PVPcount++;
+         if (mode == 2) PVCcount++;
+         if (mode == 3){
+            display();
+            goto redo;
+         }
+  
          if (mode == 1){
             cout << "Player 1. Enter your name: ";
             cin >> temp;
@@ -622,10 +755,8 @@ int main (){
                cout << "\nIllegal. Your choices are \"red\" and \"yellow\"" << endl;
          }
 
-         assign (player, computer, color);
-         print (grid);
-         cout << endl;
-         userMove (n, mode, player, computer, temp, color, grid, names);
+         assign(player, computer, color);
+         userMove(n, mode, player, computer, temp, color, grid, names);
 
          return 0;        
 }
