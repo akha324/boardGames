@@ -4,7 +4,7 @@
    The user will have the option of playing against a human or a computer.
    In addition, the user can select the color of their chip. Once the outcome of
    the match is decided, the user can choose whether to play again. If the user
-   says "yes," the program restarts. Otherwise, the program terminates.
+   says "yes", the program restarts. Otherwise, it terminates.
 */  
 
 #include <iostream>
