@@ -11,7 +11,7 @@
 #include <cstdlib>
 using namespace std;
 
-bool flag = false; 
+bool flag = false;
 bool computerTurn = false;
 int PVPcount = 0;
 int PVCcount = 0;
@@ -25,6 +25,7 @@ double P2ratio;
 // The purpose of the function is to restart the program if the user wants to play again.
 void restart (){
      string answer;
+   
      while (answer != "yes" || answer != "no"){
            cout << "\nWould you like to play again?\nEnter \'yes' or \'no' to continue: ";
            cin >> answer;
@@ -47,12 +48,11 @@ void display (){
              cout << "No. of Games Played: " << PVPcount + PVCcount << endl;
              cout << "No. of Wins: " << P1winCount << endl;
              cout << "No. of Losses: " << P1lossCount << endl;
-             
-             if (P1winCount != 0 && PVPcount != 0){
-                P1ratio = P1winCount / PVPcount;
+
+             if (P1winCount != 0 && (PVPcount != 0 || PVCcount != 0)){   
+                P1ratio = (double) P1winCount / (PVPcount + PVCcount);
                 P1ratio *= 100;
                 P1ratio = (int) P1ratio;
-                //P1ratio /= 100;
              }
   
              if (((int) P1ratio) * 100 % 100 == 0) 
@@ -61,15 +61,14 @@ void display (){
   
              cout << endl << "Player 2" << endl;
              cout << "¯¯¯¯¯¯¯¯" << endl;
-             cout << "No. of Games Played: " << PVCcount << endl;
+             cout << "No. of Games Played: " << PVPcount << endl;
              cout << "No. of Wins: " << P2winCount << endl;
              cout << "No. of Losses: " << P2lossCount << endl;
 
              if (P2winCount != 0 && PVCcount != 0){
-                P2ratio = P2winCount / PVCcount;
+                P2ratio = (double) P2winCount / PVCcount;
                 P2ratio *= 100;
                 P2ratio = (int) P2ratio;
-                //P2ratio /= 100;
              }  
   
              if (((int) P2ratio) * 100 % 100 == 0) 
@@ -607,8 +606,15 @@ void userMove (int n, int mode, string player, string computer, string temp, str
                cin >> mode;
            
                cout << endl;
-           
+
                if (mode == 1 || mode == 2 || mode == 3) break;
+         }
+
+         if (mode == 1) PVPcount++;
+         if (mode == 2) PVCcount++;
+         if (mode == 3){
+            display();
+            goto top;
          }
 
          if (mode == 1){
@@ -620,6 +626,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
             cin >> temp;
             names[1] = temp;
             cout << endl;
+           
          }
 
          if (mode == 2){
