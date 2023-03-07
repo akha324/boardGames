@@ -4,14 +4,14 @@
    The user will have the option of playing against a human or a computer.
    In addition, the user can select the color of their chip. Once the outcome of
    the match is decided, the user can choose whether to play again. If the user
-   says "yes", the program restarts. Otherwise, it terminates.
+   says "yes," the program restarts. Otherwise, the program terminates.
 */  
 
 #include <iostream>
 #include <cstdlib>
 using namespace std;
 
-bool flag = false;
+bool flag = false; 
 bool computerTurn = false;
 int PVPcount = 0;
 int PVCcount = 0;
@@ -25,7 +25,6 @@ double P2ratio;
 // The purpose of the function is to restart the program if the user wants to play again.
 void restart (){
      string answer;
-   
      while (answer != "yes" || answer != "no"){
            cout << "\nWould you like to play again?\nEnter \'yes' or \'no' to continue: ";
            cin >> answer;
@@ -43,21 +42,25 @@ void restart (){
 
 // The purpose of this function is to display statistics for Player 1 and Player 2.
 void display (){
+             if (P1winCount != 0 && PVPcount + PVCcount != 0){
+                P1ratio = (double) P1winCount / (P1winCount + P1lossCount) * 100;
+                P1ratio = (int) P1ratio;
+             }
+
              cout << "Player 1" << endl;
              cout << "¯¯¯¯¯¯¯¯" << endl;
-             cout << "No. of Games Played: " << PVPcount + PVCcount << endl;
+             cout << "No. of Games Played: " << P1winCount + P1lossCount << endl;
              cout << "No. of Wins: " << P1winCount << endl;
              cout << "No. of Losses: " << P1lossCount << endl;
 
-             if (P1winCount != 0 && (PVPcount != 0 || PVCcount != 0)){   
-                P1ratio = (double) P1winCount / (PVPcount + PVCcount);
-                P1ratio *= 100;
-                P1ratio = (int) P1ratio;
-             }
-  
              if (((int) P1ratio) * 100 % 100 == 0) 
                 cout << "Win / Loss Ratio: " << P1ratio << ".00%" << endl;
              else cout << "Win / Loss Ratio: " << P1ratio << endl;
+
+             if (P2winCount != 0 && PVPcount + PVCcount != 0){
+                P2ratio = (double) P2winCount / (P2winCount + P2lossCount) * 100;
+                P2ratio = (int) P2ratio;
+             }
   
              cout << endl << "Player 2" << endl;
              cout << "¯¯¯¯¯¯¯¯" << endl;
@@ -65,12 +68,6 @@ void display (){
              cout << "No. of Wins: " << P2winCount << endl;
              cout << "No. of Losses: " << P2lossCount << endl;
 
-             if (P2winCount != 0 && PVCcount != 0){
-                P2ratio = (double) P2winCount / PVCcount;
-                P2ratio *= 100;
-                P2ratio = (int) P2ratio;
-             }  
-  
              if (((int) P2ratio) * 100 % 100 == 0) 
                 cout << "Win / Loss Ratio: " << P2ratio << ".00%" << endl;
              else cout << "Win / Loss Ratio: " << P2ratio << endl;
@@ -99,13 +96,15 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << names[0] << " wins!" << endl;
                    P1winCount++;
                    P2lossCount++;
-                   restart(); 
+                   restart();
+                   return;
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -116,6 +115,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                 
                 if (mode == 2){
@@ -123,6 +123,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -132,12 +133,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
 
@@ -148,6 +151,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -155,6 +159,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
          }
@@ -168,12 +173,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }    
              
@@ -184,6 +191,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                 
                 if (mode == 2){
@@ -191,6 +199,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              } 
              
@@ -200,12 +209,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }       
              
@@ -216,6 +227,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -223,6 +235,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }             
          }
@@ -236,12 +249,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -252,6 +267,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -259,6 +275,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -268,12 +285,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -284,13 +303,15 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
-                   if (PVCcount > 0) print (grid);
+                   if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
 }
@@ -304,12 +325,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -320,6 +343,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -327,6 +351,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -336,12 +361,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -352,13 +379,15 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
-                } 
+                   return;
+                }
                
                 if (mode == 2){
                    if (PVCcount > 0) print(grid);
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
             }
@@ -372,12 +401,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -388,6 +419,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -395,6 +427,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -404,12 +437,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -420,6 +455,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -427,6 +463,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
             }
@@ -440,12 +477,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                 
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -456,6 +495,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
@@ -463,6 +503,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -472,12 +513,14 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P1winCount++;
                    P2lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
                    cout << "You win!" << endl;
                    P1winCount++;
                    restart();
+                   return;
                 }
              }
              
@@ -488,13 +531,15 @@ void check (int mode, string player, string computer, string grid[][6], string n
                    P2winCount++;
                    P1lossCount++;
                    restart();
+                   return;
                 } 
                
                 if (mode == 2){
-                   if (PVCcount > 0) print(grid);
+                   if (PVCcount > 0) print (grid);
                    cout << "\nYou lose." << endl;
                    P1lossCount++;
                    restart();
+                   return;
                 }
              }
             }
@@ -606,15 +651,8 @@ void userMove (int n, int mode, string player, string computer, string temp, str
                cin >> mode;
            
                cout << endl;
-
+           
                if (mode == 1 || mode == 2 || mode == 3) break;
-         }
-
-         if (mode == 1) PVPcount++;
-         if (mode == 2) PVCcount++;
-         if (mode == 3){
-            display();
-            goto top;
          }
 
          if (mode == 1){
@@ -626,7 +664,6 @@ void userMove (int n, int mode, string player, string computer, string temp, str
             cin >> temp;
             names[1] = temp;
             cout << endl;
-           
          }
 
          if (mode == 2){
