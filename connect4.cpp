@@ -19,6 +19,8 @@ int P1winCount = 0;
 int P2winCount = 0;
 int P1lossCount = 0;
 int P2lossCount = 0;
+int PVPdrawCount = 0;
+int PVCdrawCount = 0;
 double P1ratio;
 double P2ratio;
 
@@ -43,13 +45,13 @@ void restart (){
 // The purpose of this function is to display statistics for Player 1 and Player 2.
 void display (){
              if (P1winCount != 0 && PVPcount + PVCcount != 0){
-                P1ratio = (double) P1winCount / (P1winCount + P1lossCount) * 100;
+                P1ratio = (double) P1winCount / (P1winCount + P1lossCount + PVPdrawCount + PVCdrawCount) * 100;
                 P1ratio = (int) P1ratio;
              }
 
              cout << "Player 1" << endl;
              cout << "¯¯¯¯¯¯¯¯" << endl;
-             cout << "No. of Games Played: " << P1winCount + P1lossCount << endl;
+             cout << "No. of Games Played: " << P1winCount + P1lossCount + PVPdrawCount + PVCdrawCount << endl;
              cout << "No. of Wins: " << P1winCount << endl;
              cout << "No. of Losses: " << P1lossCount << endl;
 
@@ -58,7 +60,7 @@ void display (){
              else cout << "Win / Loss Ratio: " << P1ratio << endl;
 
              if (P2winCount != 0 && PVPcount + PVCcount != 0){
-                P2ratio = (double) P2winCount / (P2winCount + P2lossCount) * 100;
+                P2ratio = (double) P2winCount / (P2winCount + P2lossCount + PVPdrawCount) * 100;
                 P2ratio = (int) P2ratio;
              }
   
@@ -591,7 +593,9 @@ void userMove (int n, int mode, string player, string computer, string temp, str
          if (count == 22){
             cout << "No more moves are available." << endl;
             cout << "It's a draw!" << endl;  
-            exit(0);
+            if (mode == 1) PVPdrawCount++;
+            if (mode == 2) PVCdrawCount++;
+            goto peak;
          }
 
          if (count == 1){
