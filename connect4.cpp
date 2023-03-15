@@ -54,6 +54,7 @@ void display (){
              cout << "No. of Games Played: " << P1winCount + P1lossCount + PVPdrawCount + PVCdrawCount << endl;
              cout << "No. of Wins: " << P1winCount << endl;
              cout << "No. of Losses: " << P1lossCount << endl;
+             cout << "No. of Draws: " << PVPdrawCount + PVCdrawCount << endl;
 
              if (((int) P1ratio) * 100 % 100 == 0) 
                 cout << "Win / Loss Ratio: " << P1ratio << ".00%" << endl;
@@ -69,6 +70,7 @@ void display (){
              cout << "No. of Games Played: " << PVPcount << endl;
              cout << "No. of Wins: " << P2winCount << endl;
              cout << "No. of Losses: " << P2lossCount << endl;
+             cout << "No. of Draws: " << PVPdrawCount << endl;
 
              if (((int) P2ratio) * 100 % 100 == 0) 
                 cout << "Win / Loss Ratio: " << P2ratio << ".00%" << endl;
