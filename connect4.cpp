@@ -96,7 +96,7 @@ void check (int mode, string player, string computer, string grid[][6], string n
          for (int r = 0; r <= 6; r++){
          for (int c = 0; c <= 2; c++){
              if (player == "🔴" && (grid[r][c] == "🔴" && grid[r][c + 1] == "🔴" && grid[r][c + 2] == "🔴" && grid[r][c + 3] == "🔴")){   
-               if (mode == 1){
+                if (mode == 1){
                    cout << names[0] << " wins!" << endl;
                    P1winCount++;
                    P2lossCount++;
@@ -610,6 +610,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
               cout << "Round" << count << endl;
          else  
               cout << "\nRound " << count << endl;
+         
          beginning:
          cout << "It's " << names[0] << "'s turn." << endl;
          cout << "Enter a column number: ";
@@ -628,10 +629,12 @@ void userMove (int n, int mode, string player, string computer, string temp, str
                  grid[r][n] = player;
                  break;
              }     
-             if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r != 0 && grid[r - 1][n] == "🟦"){
+             
+            if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r != 0 && grid[r - 1][n] == "🟦"){
                 grid[r - 1][n] = player;
                 break;
              }
+             
              if ((grid[r][n] == "🔴" || grid[r][n] == "🟡") && r == 0){
                 cout << "Illegal. No slots are available in this column." << endl;
                 goto beginning;
