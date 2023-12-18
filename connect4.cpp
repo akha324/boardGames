@@ -650,7 +650,7 @@ void userMove (int n, int mode, string player, string computer, string temp, str
 
          top:    
          while (mode != 1 || mode != 2){
-               cout << "Enter the number which corresponds with the game mode of your choice: " << endl << endl;
+               cout << "Enter the number which corresponds that the game mode of your choice: " << endl << endl;
                cout << "1. Player VS Player" << endl;
                cout << "2. Player VS Computer" << endl;
                cout << "3. View Statistics" << endl << endl;
@@ -757,7 +757,7 @@ int main (){
 
          redo:
          while (mode != 1 || mode != 2){
-               cout << "Enter the number which corresponds with the game mode of your choice: " << endl << endl;
+               cout << "Enter the number that corresponds with the mode of your choice: " << endl << endl;
                cout << "1. Player VS Player" << endl;
                cout << "2. Player VS Computer" << endl;
                cout << "3. View Statistics" << endl << endl;
